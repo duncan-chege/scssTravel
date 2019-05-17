@@ -1,0 +1,63 @@
+$parallax-height: 100vh;
+$center-margin: 0px auto;
+
+@mixin background-size($size) {
+    -webkit-background-size: $size; //'cover' ensures the background image covers the entire div
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+@mixin parallax-background($file) {
+    //file used to pass in any file we want
+    background: url($file) no-repeat center center fixed; //centered vertically & horizontally
+    @include background-size(cover);    //covers the full div
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+    color: #2e3738;
+}
+
+#landscape {
+    @include parallax-background('landscape.jpg')
+}
+
+#monkeys {
+    @include parallax-background('monkeys.jpg')
+}
+
+#landscape,
+#monkeys {
+    width: 100%;
+    height: $parallax-height; //makes the div one window height tall
+    perspective: 1px;   //creates a 3D environment that we can work with
+    transform: translateZ(-1px);
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    h1 {
+        text-transform: uppercase;
+        font-family: 'Bitter', serif;
+        letter-spacing: 0.06em;
+        font-size: 120px;
+        color: #ffffff;
+        opacity: 0.7;
+        text-align: center;
+        transform: translateZ(-2px);    //pushing the text 2 units away from an 'imaginary camera'. Making it seem smaller
+
+    }
+}
+
+p {
+    width: 70%;
+    padding: 5%;
+    margin: $center-margin;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1.4;
+}
