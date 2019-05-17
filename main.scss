@@ -1,33 +1,35 @@
 $parallax-height: 100vh;
 $center-margin: 0px auto;
+@import 'placeholders';
 
-@mixin background-size($size) {
-    -webkit-background-size: $size; //'cover' ensures the background image covers the entire div
-    -moz-background-size: $size;
-    -o-background-size: $size;
-    background-size: $size;
-}
+// @mixin background-size($size) {
+//     -webkit-background-size: $size; //'cover' ensures the background image covers the entire div
+//     -moz-background-size: $size;
+//     -o-background-size: $size;
+//     background-size: $size;
+// }
 
-@mixin parallax-background($file) {
-    //file used to pass in any file we want
-    background: url($file) no-repeat center center fixed; //centered vertically & horizontally
-    @include background-size(cover);    //covers the full div
-}
+// @mixin parallax-background($file) {
+//     //file used to pass in any file we want
+//     background: url($file) no-repeat center center fixed; //centered vertically & horizontally
+//     @include background-size(cover);    //covers the full div
+// }
 
 html,
 body {
-    margin: 1;
+    margin: 0;
     padding: 0;
     font-family: Roboto;
     color: #2e3738;
 }
 
 #landscape {
-    @include parallax-background('landscape.jpg')
+    @extend %parallax_background;
 }
 
 #monkeys {
-    @include parallax-background('monkeys.jpg')
+    @extend %parallax_background2;
+    // @include parallax-background('monkeys.jpg')
 }
 
 #landscape,
